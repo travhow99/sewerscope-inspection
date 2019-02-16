@@ -1,0 +1,85 @@
+LOCATION OF SCOPE / ACCESS
+<option>Mechanical Room Wall Cleanout</option>
+<option>Basement Wall Cleanout</option>
+<option>Basement Mechanical Room Wall Cleanout</option>
+<option>Basement Floor Cleanout</option>
+<option>Crawlspace Cleanout</option>
+<option>Main Level Cleanout</option>
+<option>Roof Vent</option>
+<option>Floor Drain</option>
+<option>Floor Drain Vent</option>
+<option>Kitchen Waste Line</option>
+<option>Laundry Cleanout</option>
+<option>Basement Laundry Cleanout</option>
+<option>Cleanout located at the exterior of the house.</option>
+
+CONDITION OF CLEANOUTS
+<option>Excessive corrosion was found near the main cleanout.</option>
+<option>Serviceable</option>
+<option>The cleanout fittings were not visible / accessible.</option>
+<option>The cleanout cap was leaking.</option>
+<option>The cleanout cap was damaged.</option>
+<option>The cleanout fitting threads were corroded / damaged.</option>
+<option>The exterior cleanouts appeared to be buried / were not accessible for inspection.</option>
+<option>There appeared to be over 100 feet between cleanouts in the lateral / main sewer line.</option>
+
+UNDERFLOOR INTERIOR LINE/PIPE
+(Underfloor Line Material)
+<option>Cast Iron</option>
+<option>PVC (Polyvinyl chloride)</option>
+<option>ABS (Acrylonitrile butadiene styrene)</option>
+<option>Plastic</option>
+<option>Galvanized Steel</option>
+
+UNDERGROUND EXTERIOR / LATERAL LINE/ PIPE
+(Lateral Line Material)
+<option>PVC (Polyvinyl chloride)</option>
+<option>SDR 35 (Standard Dimensional Ratio PVC)</option>
+<option>PVC (Polyvinyl chloride) and SDR 35 (Standard Dimensional Ratio PVC)</option>
+<option>ABS (Acrylonitrile butadiene styrene)</option>
+<option>Clay and SDR 35 (Standard Dimensional Ratio PVC)</option>
+<option>Concrete</option>
+<option>Appeared to be Transite / Asbestos Cement</option>
+<option>Concrete and Transite / Asbestos Cement</option>
+<option>Plastic / High density polyethylene (HDPE)</option>
+<option>Appeared to be Orangeburg / Bermico (Bituminous fiber pipe)</option>
+<option>Cured in place pipe / Epoxy fiberglass</option>
+<option>SDR 35 (Standard Dimensional Ratio PVC) and Plastic / High density polyethylene (HDPE)</option>
+<option>PVC (Polyvinyl chloride) and Clay</option>
+<option>Clay and Concrete</option>
+
+LENGTH OF MAIN LINE/PIPE
+(Length of Line)
+<option>The main sewer line/pipe was approximately feet from the access point to the city tap.</option>
+<option>The main sewer line/pipe was approximately feet from the access point to the HOA tap.</option>
+<option>The main sewer line/pipe was approximately feet from the access point to the city tap.</option>
+<option>The main sewer line/pipe was approximately feet from the access point to the septic tap.</option>
+<option>Unknown, unable to reach city tap.</option>
+
+MAIN SEWER LINE/PIPE MATERIAL
+Main Line Condition
+
+<option>Multiple offsets were visible in the main sewer line/pipe.</option>
+<option>An offset was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+<option>Multiple offsets with root intrusion were visible in the main sewer line/pipe.</option>
+<option>An offset with heavy root intrusion was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+<option>Root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+<option>Heavy root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+<option>Hairline cracks appeared to be visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+<option>There appeared to be a crack visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+<option>The main sewer line/pipe was holding water at approximately {num} feet from the access point.</option>
+<option>The main sewer line/pipe appeared to be separated/disconnected at approximately {num} feet from the access point.</option>
+<option>The main sewer line/pipe appeared to be crushed at approximately {num} feet from the access point.</option>
+<option>The main sewer line/pipe appeared to be broken at the city tap.</option>
+<option>The main sewer line/pipe appeared to be offset at the city tap.</option>
+<option>Heavy rust/scale was visible in the cast iron portion of the main sewer line/pipe.</option>
+<option>An offset with heavy root intrusion was located in the main sewer line/pipe city tap.</option>
+<option>Heavy grease build up was visible in the main sewer line/pipe.</option>
+<option>The camera was restricted/could not proceed at at approximately {num} feet from the access point.</option>
+<option>Due to heavy intrusion of roots, the main sewer line/pipe was not visible for inspection.</option>
+<option>Due to heavy intrusion of roots, portions of the main sewer line/pipe were not visible for inspection.</option>
+<option>Due to heavy scale, the interior portion of the main sewer line/pipe was not fully visible for inspection.</option>
+<option>The camera could not advance past {num} feet/was not able to reach city tap, the sewer scope/inspection is limited to areas viewed.</option>
+<option>The main sewer line/pipe appeared to be egg shaped/compressed.</option>
+<option>The main sewer line/pipe appeared to be delaminated/deteiorated.</option>
+<option>The main sewer line/pipe appeared to be Orangeburg/compressed.</option>
