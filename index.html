@@ -23,9 +23,17 @@
   <p>Let's get inspecting.</p>
 
   <form>
-    Property Address: <input type="text" name="address"><br>
-    Date of Scope: <input type="text" name="date" id="datepicker"><br>
-    Time of Scope: <input type="text" name="time" class="timepicker"><br>
+    <div class="form-group">
+      Property Address: <input type="text" name="address">
+    </div>
+    <div class="form-group">
+      Date of Scope: <input type="text" name="date" id="datepicker">
+    </div>
+    <div class="form-group">
+      <label for="time">Time of Scope:</label> 
+        <input type="text" name="time" class="timepicker">
+    </div>
+
       <div class="form-group">
         <label for="location">Location of Scope / Access:</label>
         <select class="form-control" id="location">
@@ -99,7 +107,7 @@
         <label for="mainLine">Length of Main Line/Pipe:</label>
         <select class="form-control" id="mainLine">
           <option selected="true" disabled="disabled">Length of Line</option>
-          <option>The main sewer line/pipe was approximately `{num}` feet from the access point to the city tap.</option>
+          <option class="number">The main sewer line/pipe was approximately {num} feet from the access point to the city tap.</option>
           <option>The main sewer line/pipe was approximately feet from the access point to the HOA tap.</option>
           <option>The main sewer line/pipe was approximately feet from the access point to the city tap.</option>
           <option>The main sewer line/pipe was approximately feet from the access point to the septic tap.</option>
@@ -113,26 +121,26 @@
         <select class="form-control" id="lineCondition1">
           <option selected="true" disabled="disabled">Main Line Condition 1</option>
           <option>Multiple offsets were visible in the main sewer line/pipe.</option>
-          <option>An offset was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">An offset was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
           <option>Multiple offsets with root intrusion were visible in the main sewer line/pipe.</option>
-          <option>An offset with heavy root intrusion was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>Root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>Heavy root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>Hairline cracks appeared to be visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>There appeared to be a crack visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>The main sewer line/pipe was holding water at approximately {num} feet from the access point.</option>
-          <option>The main sewer line/pipe appeared to be separated/disconnected at approximately {num} feet from the access point.</option>
-          <option>The main sewer line/pipe appeared to be crushed at approximately {num} feet from the access point.</option>
+          <option class="number">An offset with heavy root intrusion was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">Root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">Heavy root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">Hairline cracks appeared to be visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">There appeared to be a crack visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">The main sewer line/pipe was holding water at approximately {num} feet from the access point.</option>
+          <option class="number">The main sewer line/pipe appeared to be separated/disconnected at approximately {num} feet from the access point.</option>
+          <option class="number">The main sewer line/pipe appeared to be crushed at approximately {num} feet from the access point.</option>
           <option>The main sewer line/pipe appeared to be broken at the city tap.</option>
           <option>The main sewer line/pipe appeared to be offset at the city tap.</option>
           <option>Heavy rust/scale was visible in the cast iron portion of the main sewer line/pipe.</option>
           <option>An offset with heavy root intrusion was located in the main sewer line/pipe city tap.</option>
           <option>Heavy grease build up was visible in the main sewer line/pipe.</option>
-          <option>The camera was restricted/could not proceed at at approximately {num} feet from the access point.</option>
+          <option class="number">The camera was restricted/could not proceed at at approximately {num} feet from the access point.</option>
           <option>Due to heavy intrusion of roots, the main sewer line/pipe was not visible for inspection.</option>
           <option>Due to heavy intrusion of roots, portions of the main sewer line/pipe were not visible for inspection.</option>
           <option>Due to heavy scale, the interior portion of the main sewer line/pipe was not fully visible for inspection.</option>
-          <option>The camera could not advance past {num} feet/was not able to reach city tap, the sewer scope/inspection is limited to areas viewed.</option>
+          <option class="number">The camera could not advance past {num} feet/was not able to reach city tap, the sewer scope/inspection is limited to areas viewed.</option>
           <option>The main sewer line/pipe appeared to be egg shaped/compressed.</option>
           <option>The main sewer line/pipe appeared to be delaminated/deteiorated.</option>
           <option>The main sewer line/pipe appeared to be Orangeburg/compressed.</option>
@@ -145,26 +153,26 @@
         <select class="form-control" id="lineCondition2">
           <option selected="true" disabled="disabled">Main Line Condition 2</option>
           <option>Multiple offsets were visible in the main sewer line/pipe.</option>
-          <option>An offset was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">An offset was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
           <option>Multiple offsets with root intrusion were visible in the main sewer line/pipe.</option>
-          <option>An offset with heavy root intrusion was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>Root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>Heavy root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>Hairline cracks appeared to be visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>There appeared to be a crack visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
-          <option>The main sewer line/pipe was holding water at approximately {num} feet from the access point.</option>
-          <option>The main sewer line/pipe appeared to be separated/disconnected at approximately {num} feet from the access point.</option>
-          <option>The main sewer line/pipe appeared to be crushed at approximately {num} feet from the access point.</option>
+          <option class="number">An offset with heavy root intrusion was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">Root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">Heavy root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">Hairline cracks appeared to be visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">There appeared to be a crack visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">The main sewer line/pipe was holding water at approximately {num} feet from the access point.</option>
+          <option class="number">The main sewer line/pipe appeared to be separated/disconnected at approximately {num} feet from the access point.</option>
+          <option class="number">The main sewer line/pipe appeared to be crushed at approximately {num} feet from the access point.</option>
           <option>The main sewer line/pipe appeared to be broken at the city tap.</option>
           <option>The main sewer line/pipe appeared to be offset at the city tap.</option>
           <option>Heavy rust/scale was visible in the cast iron portion of the main sewer line/pipe.</option>
           <option>An offset with heavy root intrusion was located in the main sewer line/pipe city tap.</option>
           <option>Heavy grease build up was visible in the main sewer line/pipe.</option>
-          <option>The camera was restricted/could not proceed at at approximately {num} feet from the access point.</option>
+          <option class="number">The camera was restricted/could not proceed at at approximately {num} feet from the access point.</option>
           <option>Due to heavy intrusion of roots, the main sewer line/pipe was not visible for inspection.</option>
           <option>Due to heavy intrusion of roots, portions of the main sewer line/pipe were not visible for inspection.</option>
           <option>Due to heavy scale, the interior portion of the main sewer line/pipe was not fully visible for inspection.</option>
-          <option>The camera could not advance past {num} feet/was not able to reach city tap, the sewer scope/inspection is limited to areas viewed.</option>
+          <option class="number">The camera could not advance past {num} feet/was not able to reach city tap, the sewer scope/inspection is limited to areas viewed.</option>
           <option>The main sewer line/pipe appeared to be egg shaped/compressed.</option>
           <option>The main sewer line/pipe appeared to be delaminated/deteiorated.</option>
           <option>The main sewer line/pipe appeared to be Orangeburg/compressed.</option>
@@ -192,7 +200,7 @@
           <option>Heavy rust/scale was visible in the cast iron portion of the main sewer line/pipe.</option>
           <option>An offset with heavy root intrusion was located in the main sewer line/pipe city tap.</option>
           <option>Heavy grease build up was visible in the main sewer line/pipe.</option>
-          <option>The camera was restricted/could not proceed at at approximately {num} feet from the access point.</option>
+          <option class="number">The camera was restricted/could not proceed at at approximately {num} feet from the access point.</option>
           <option>Due to heavy intrusion of roots, the main sewer line/pipe was not visible for inspection.</option>
           <option>Due to heavy intrusion of roots, portions of the main sewer line/pipe were not visible for inspection.</option>
           <option>Due to heavy scale, the interior portion of the main sewer line/pipe was not fully visible for inspection.</option>
