@@ -1,3 +1,21 @@
+html, body {
+  height: 100%;
+  margin: 10px 20px;
+  background-color: #d6450e!important;
+  color: white!important;
+}
+
+.container.form {
+  background: white;
+  color: black;
+  margin: 20px;
+  border-radius: 12px;
+}
+
+form {
+  padding: 10px;
+}
+
 .remover {
   color: red;
   cursor: pointer;
