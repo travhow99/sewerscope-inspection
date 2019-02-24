@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  function jsUcfirst(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
   $( function() {
     $( "#datepicker" ).datepicker();
   } );
@@ -43,10 +47,11 @@ $(document).ready(function() {
 
   function generatePDF() {
     event.preventDefault();
+    let source = `<body>`;
 
     var x = $("#mainForm").serializeArray();
     $.each(x, function(i, field){
-      console.log(field.name + ": " + field.value);
+      source += '<p><strong>' + jsUcfirst(field.name) + ":</strong> " + field.value + '</p>';
     });
 
     // Gather all form-group info
@@ -58,14 +63,14 @@ $(document).ready(function() {
       } else {
         $value = $(this).children('select').val();
       }
-      console.log($label + ' ' + $value);
+      source += '<p><strong>' + $label + '</strong> ' + $value  + '</p>';
     });
 
     var pdf = new jsPDF('p', 'pt', 'letter');
     pdf.canvas.height = 72 * 11;
     pdf.canvas.width = 72 * 8.5;
 
-    source = document.body;
+    console.log(source);
 
     margins = {
       top: 40,

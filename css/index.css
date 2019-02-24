@@ -20,3 +20,7 @@ form {
   color: red;
   cursor: pointer;
 }
+
+.input {
+  margin-bottom: 15px;
+}
