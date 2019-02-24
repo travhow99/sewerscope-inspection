@@ -46,7 +46,19 @@ $(document).ready(function() {
 
     var x = $("#mainForm").serializeArray();
     $.each(x, function(i, field){
-      console.log(field.name + ":" + field.value + " ");
+      console.log(field.name + ": " + field.value);
+    });
+
+    // Gather all form-group info
+    $('.form-group').each(function() {
+      let $value;
+      let $label = $(this).children('label').text();
+      if ($(this).has('.editing').length !== 0) {
+        $value = $(this).children('.editing').text();
+      } else {
+        $value = $(this).children('select').val();
+      }
+      console.log($label + ' ' + $value);
     });
 
 
@@ -74,15 +86,13 @@ $(document).ready(function() {
     const $span = ' <span class="remover">x</span>';
 
     $('.editing').each(function() {
-      console.log($(this));
+
       let $inputValue = $(this).children('.number-input').val();
       let $html = $(this).html();
 
       let res = $html.replace($input, $inputValue);
       res = res.replace($span, '');
 
-      console.log($html.indexOf($input));
-      console.log(res);
       $(this).html(res);
     });
   }
