@@ -3,6 +3,7 @@ html, body {
   margin: 10px 20px;
   background-color: #d6450e!important;
   color: white!important;
+  font-family: 'Cardo', serif !important;
 }
 
 .container.form {
@@ -22,5 +23,10 @@ form {
 }
 
 .input {
+  margin-bottom: 15px;
+}
+
+#submit {
+  float: right;
   margin-bottom: 15px;
 }
