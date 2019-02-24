@@ -23,7 +23,7 @@
 
 
 <div class="container form">
-  <form>
+  <form id="mainForm">
     <div class="form-group">
       <label for="address">Property Address:</label>
       <input type="text" name="address">
@@ -36,6 +36,7 @@
       <label for="time">Time of Scope:</label>
       <input type="text" name="time" class="timepicker">
     </div>
+    <hr />
 
       <div class="form-group">
         <label for="location">Location of Scope / Access:</label>
@@ -234,12 +235,15 @@
         <input type="website" name="url">
       </div>
 
+      <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-default" id="submit">
+      </div>
   </form>
 </div>
 
 
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
   <script>
   // Initialize Firebase
