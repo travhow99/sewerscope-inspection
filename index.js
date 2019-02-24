@@ -61,6 +61,36 @@ $(document).ready(function() {
       console.log($label + ' ' + $value);
     });
 
+    var pdf = new jsPDF('p', 'pt', 'letter');
+    pdf.canvas.height = 72 * 11;
+    pdf.canvas.width = 72 * 8.5;
+
+    source = document.body;
+
+    margins = {
+      top: 40,
+      bottom: 60,
+      left: 40,
+      width: 522
+    };
+
+
+
+    pdf.fromHTML(
+      source,
+      margins.left,
+      margins.top, {
+        'width': margins.width,
+      },
+
+      function (dispose) {
+        // dispose: object with X, Y of the last line add to the PDF
+        //          this allow the insertion of new lines after html
+        pdf.save('Test.pdf');
+
+      }, margins);
+
+    //pdf.save('test.pdf');
 
 /*
     let $formData = $('#mainForm');
@@ -97,6 +127,8 @@ $(document).ready(function() {
     });
   }
 
+// TO-DO
+  // Prevent submission if incomplete
   $("#submit").click(function() {
     // Call function to fix all .editing
     gatherData();
