@@ -91,11 +91,21 @@ $(document).ready(function() {
       function (dispose) {
         // dispose: object with X, Y of the last line add to the PDF
         //          this allow the insertion of new lines after html
-        pdf.save('Test.pdf');
+        //pdf.save('Test.pdf');
 
       }, margins);
 
-    //pdf.save('test.pdf');
+      let pdfBase64 = pdf.output('datauristring');
+/*
+      window.plugin.email.open({
+        to: [''],
+        subject: 'New PDF!',
+        body: 'Hi there, here is that new PDF you wanted!',
+        isHTML: false,
+        attachments: [pdfBase64]
+      });
+*/
+    pdf.save('test.pdf');
 
 /*
     let $formData = $('#mainForm');
