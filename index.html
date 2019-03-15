@@ -193,6 +193,10 @@
           <option selected="true" disabled="disabled">Main Line Condition 3</option>
           <option>Multiple offsets were visible in the main sewer line/pipe.</option>
           <option class="number">An offset was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">Root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">Heavy root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">Hairline cracks appeared to be visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option class="number">There appeared to be a crack visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
           <option>Multiple offsets with root intrusion were visible in the main sewer line/pipe.</option>
           <option class="number">An offset with heavy root intrusion was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
           <option class="number">Root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
@@ -214,7 +218,10 @@
           <option class="number">The camera could not advance past {num} feet/was not able to reach city tap, the sewer scope/inspection is limited to areas viewed.</option>
           <option>The main sewer line/pipe appeared to be egg shaped/compressed.</option>
           <option>The main sewer line/pipe appeared to be delaminated/deteiorated.</option>
-          <option>The main sewer line/pipe appeared to be Orangeburg/compressed.</option>
+          <option>The main sewer line/pipe appeared to be Orangeburg/compressed and have been documented problems related with this product.</option>
+          <option class="number">A crack was visible in the main sewer line/pipe at approximately {num} feet from the access point.</option>
+          <option>The main sewer line/pipe was holding water and debris at multiple locations.</option>
+          <option>Heavy root intrusion at a join was visible in the main sewer line/pipe at multiple locations.</option>
         </select>
       </div>
 
@@ -233,9 +240,17 @@
         </select>
       </div>
 
-      <div class="input">
+      <div class="form-group">
         <label>Video URL:</label>
-        <input type="website" name="url" class="form-control">
+        <div class="input-group">
+          <span class="input-group-addon">https://</span>
+          <input type="website" name="url" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="recommendations">Inspector Recommendations:</label>
+        <textarea class="form-control" rows="5" id="recommendations"></textarea>
       </div>
 
       <input type="submit" value="Save" class="btn btn-default" id="submit">

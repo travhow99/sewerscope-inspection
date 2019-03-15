@@ -47,7 +47,7 @@ $(document).ready(function() {
 
   function generatePDF() {
     event.preventDefault();
-    let source = `<body>`;
+    let source = `<body><h1>Sewer Scope Inspection</h1>`;
 
     var x = $("#mainForm").serializeArray();
     $.each(x, function(i, field){
@@ -60,6 +60,9 @@ $(document).ready(function() {
       let $label = $(this).children('label').text();
       if ($(this).has('.editing').length !== 0) {
         $value = $(this).children('.editing').text();
+      } else if ($label === 'Inspector Recommendations:') {
+        $value = $('#recommendations').val();
+        console.log($value);
       } else {
         $value = $(this).children('select').val();
       }
