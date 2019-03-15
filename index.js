@@ -47,7 +47,7 @@ $(document).ready(function() {
 
   function generatePDF() {
     event.preventDefault();
-    let source = `<body>`;
+    let source = `<body><h1>Sewer Scope Report</h1>`;
 
     var x = $("#mainForm").serializeArray();
     $.each(x, function(i, field){
@@ -70,7 +70,7 @@ $(document).ready(function() {
     pdf.canvas.height = 72 * 11;
     pdf.canvas.width = 72 * 8.5;
 
-    console.log(source);
+    //console.log(source);
 
     margins = {
       top: 40,
@@ -95,7 +95,7 @@ $(document).ready(function() {
 
       }, margins);
 
-      let pdfBase64 = pdf.output('datauristring');
+      //let pdfBase64 = pdf.output('datauristring');
 /*
       window.plugin.email.open({
         to: [''],
@@ -105,7 +105,20 @@ $(document).ready(function() {
         attachments: [pdfBase64]
       });
 */
-    pdf.save('test.pdf');
+    //pdf.save('test.pdf');
+    //pdf.output('dataurlnewwindow');
+
+
+    $.ajax({
+      //method: "POST",
+      url: "email.php",
+      type: "POST",
+      data: source,
+      /*
+    }).done(function(data){
+       console.log(data);
+       */
+    });
 
 /*
     let $formData = $('#mainForm');
