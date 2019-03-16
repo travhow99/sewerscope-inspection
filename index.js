@@ -113,6 +113,20 @@ $(document).ready(function() {
       $(this).hide();
     }
 
+    // Changeable locations
+    if ($selected.hasClass('location')) {
+      console.log('location');
+      const dropdown = `<select class="location-dropdown">
+                          <option>street</option>
+                          <option>yard</option>
+                          <option>alley</option>
+                          <option>road</option>
+                        </select>`;
+      $location = $selected.text().replace('{location}', dropdown);
+      $selected.parent().prev().after(`<p class="location-edit">${$location} <span class="remover">x</span></p>`);
+      $(this).hide();
+    }
+
   });
 
   // Click function for dynamic .remover
@@ -122,6 +136,9 @@ $(document).ready(function() {
     console.log($this);
     $this.closest('.editing').siblings('.form-control').show();
     $this.closest('.editing').hide();
+
+    $this.closest('.location-edit').siblings('.form-control').show();
+    $this.closest('.location-edit').hide();
   });
 
   // Click function for dynamic .add-range
@@ -150,6 +167,8 @@ $(document).ready(function() {
       let $label = $(this).children('label').text();
       if ($(this).has('.editing').length !== 0) {
         $value = $(this).children('.editing').text();
+      } else if ($(this).has('.location-edit').length !== 0) {
+        $value = $(this).children('.location-edit').text();
       } else if ($label === 'Inspector Recommendations:') {
         $value = $('#recommendations').val();
       } else if ($(this).attr('id')==="video") {
@@ -214,7 +233,7 @@ $(document).ready(function() {
     var doc = new jsPDF()
 
     doc.text('Hello world!', 10, 10)
-    //doc.save('a4.pdf')
+    doc.save('a4.pdf')
 */
   }
 
@@ -240,6 +259,29 @@ $(document).ready(function() {
 
       $(this).html(res);
     });
+
+    $('.location-edit').each(function() {
+      const dropdown = `<select class="location-dropdown">
+                          <option>street</option>
+                          <option>yard</option>
+                          <option>alley</option>
+                          <option>road</option>
+                        </select>`;
+
+      let $selected = $(this).find('.location-dropdown').children(':selected').val();
+      console.log($selected);
+
+      let $html = $(this).html();
+
+      let res = $html.replace(dropdown, $selected);
+
+      res = res.replace($span, '');
+
+      console.log(res);
+
+
+      $(this).html(res);
+    })
   }
 
 // TO-DO

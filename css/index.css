@@ -21,10 +21,12 @@ form {
 .remover {
   color: red;
   cursor: pointer;
+  vertical-align: super;
 }
 
 .add-range {
   cursor: pointer;
+  vertical-align: super;
 }
 
 .input {
