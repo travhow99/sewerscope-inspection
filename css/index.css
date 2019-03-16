@@ -23,11 +23,15 @@ form {
   cursor: pointer;
 }
 
+.add-range {
+  cursor: pointer;
+}
+
 .input {
   margin-bottom: 15px;
 }
 
-input.number-input {
+input.number-input, input.number-range {
     width: 56px;
 }
 

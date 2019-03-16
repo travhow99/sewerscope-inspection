@@ -56,6 +56,7 @@
           <option>Floor Drain Vent</option>
           <option>Kitchen Waste Line</option>
           <option>Laundry Cleanout</option>
+          <option>Garage Cleanout</option>
           <option>Basement Laundry Cleanout</option>
           <option>Cleanout located at the exterior of the house.</option>
         </select>
@@ -81,6 +82,8 @@
         <select class="form-control" id="underfloor">
           <option selected="true" disabled="disabled">Underfloor Line Material</option>
           <option>Cast Iron</option>
+          <option>Cast Iron and PVC</option>
+          <option>Cast Iron and ABS</option>
           <option>PVC (Polyvinyl chloride)</option>
           <option>ABS (Acrylonitrile butadiene styrene)</option>
           <option>Plastic</option>
@@ -89,13 +92,14 @@
       </div>
 
       <div class="form-group">
-        <label for="underground">Underground Exterior / Lateral Line/ Pipe:</label>
+        <label for="underground">Underground Exterior/Lateral Line/ Pipe:</label>
         <select class="form-control" id="underground">
           <option selected="true" disabled="disabled">Lateral Line Material</option>
           <option>PVC (Polyvinyl chloride)</option>
           <option>SDR 35 (Standard Dimensional Ratio PVC)</option>
           <option>PVC (Polyvinyl chloride) and SDR 35 (Standard Dimensional Ratio PVC)</option>
           <option>ABS (Acrylonitrile butadiene styrene)</option>
+          <option>Clay</option>
           <option>Clay and SDR 35 (Standard Dimensional Ratio PVC)</option>
           <option>Concrete</option>
           <option>Appeared to be Transite / Asbestos Cement</option>
@@ -144,6 +148,12 @@
       </div>
 
       <div class="form-group">
+        <label for="lineCondition4">Main Sewer Line/Pipe Condition:</label>
+        <select class="form-control" id="lineCondition4">
+        </select>
+      </div>
+
+      <div class="form-group">
         <label for="defects">Located Defects:</label>
         <select class="form-control" id="underfloor">
           <option selected="true" disabled="disabled">Located Defects</option>
@@ -178,19 +188,6 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
-  <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBjVuwHMliD2x3-wsjShPu7qxtupoBba20",
-    authDomain: "sewer-scope-report.firebaseapp.com",
-    databaseURL: "https://sewer-scope-report.firebaseio.com",
-    projectId: "sewer-scope-report",
-    storageBucket: "",
-    messagingSenderId: "1058355636447"
-  };
-  firebase.initializeApp(config);
-  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 </html>

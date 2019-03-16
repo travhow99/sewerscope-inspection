@@ -1,3 +1,7 @@
+// TO-DO
+  // And in the located section the street/yard/alley/road should be chang-able options like the footage counter in defects.
+
+
 const conditions = [
   'Multiple offsets were visible in the main sewer line/pipe.',
   'An offset was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
@@ -30,6 +34,7 @@ const conditions = [
   'The main sewer line/pipe appeared to be delaminated / deteriorated.',
   'The main sewer line/pipe appeared to be Orangeburg / Bermico (Bituminous fiber pipe), there have been documented problems related with this product.',
   'A crack was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'Multiple cracks were visible in the main sewer line/pipe.',
   'The main sewer line/pipe was holding water and debris at multiple locations.',
   'Heavy root intrusion at a joint was visible in the main sewer line/pipe at multiple locations.'
 ];
@@ -61,7 +66,14 @@ function addConditions(id) {
 }
 
 $(document).ready(function() {
-  console.log(conditions.length);
+  // Include Bootstrap tooltip for dynamic element
+  $('[data-toggle="tooltip"]').tooltip();
+
+  $("body").tooltip({
+      selector: '[data-toggle="tooltip"]'
+  });
+
+  //console.log(conditions.length);
 
   function jsUcfirst(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
@@ -86,22 +98,24 @@ $(document).ready(function() {
   addConditions($('#lineCondition1'));
   addConditions($('#lineCondition2'));
   addConditions($('#lineCondition3'));
+  addConditions($('#lineCondition4'));
 
   $('select').change(function() {
     let $this = $(this);
     let $selected = $this.find(':selected');
 
-    const numberInput = `<input type="number" class="number-input">`;
+    const numberInput = `<input type="number" class="number-input"><a class="add-range" data-toggle="tooltip" title="Add Range"><sup>+</sup></a>`;
     //let $selected = $('#lineCondition3 option:selected');
 
     if ($selected.hasClass('number')) {
-      $editable = $selected.text().replace("{num}", numberInput);
+      $editable = $selected.text().replace(/{num}/g, numberInput);
       $selected.parent().prev().after(`<p class="editing">${$editable} <span class="remover">x</span></p>`);
       $(this).hide();
     }
 
   });
 
+  // Click function for dynamic .remover
   $(document).on('click', '.remover', function(){
     console.log('clicked');
     let $this = $(this);
@@ -110,6 +124,15 @@ $(document).ready(function() {
     $this.closest('.editing').hide();
   });
 
+  // Click function for dynamic .add-range
+  $(document).on('click', '.add-range', function(){
+    const rangeElement = ` - <input type="number" class="number-range">`;
+
+    //Hide tooltip
+    $(this).tooltip('hide');
+
+    $(this).replaceWith(rangeElement);
+  });
 
 
   function generatePDF() {
@@ -174,7 +197,7 @@ $(document).ready(function() {
         attachments: [pdfBase64]
       });
 */
-    pdf.save('test.pdf');
+    pdf.save('sewerscope-report.pdf');
 
 /*
     let $formData = $('#mainForm');
@@ -197,14 +220,22 @@ $(document).ready(function() {
 
   function gatherData() {
     const $input = '<input type="number" class="number-input">';
+    const $range = '<input type="number" class="number-range">';
     const $span = ' <span class="remover">x</span>';
 
     $('.editing').each(function() {
 
       let $inputValue = $(this).children('.number-input').val();
+      let $inputRange = $(this).children('.number-range').val();
+
       let $html = $(this).html();
 
       let res = $html.replace($input, $inputValue);
+
+      if ($inputRange) {
+        res = res.replace($range, $inputRange)
+      }
+
       res = res.replace($span, '');
 
       $(this).html(res);
