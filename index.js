@@ -1,4 +1,67 @@
+const conditions = [
+  'Multiple offsets were visible in the main sewer line/pipe.',
+  'An offset was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'An offset with root intrusion was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'Multiple offsets with root intrusion were visible in the main sewer line/pipe.',
+  'Multiple offsets with heavy root intrusion were visible in the main sewer line/pipe.',
+  'An offset with heavy root intrusion was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'Root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'Heavy root intrusion at a joint was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'Hairline cracks appeared to be visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'There appeared to be a crack visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'The main sewer line/pipe was holding water at approximately {num} feet from the access point.',
+  'A belly / low point was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'The main sewer line/pipe appeared to be separated / disconnected at approximately {num} feet from the access point.',
+  'The main sewer line/pipe appeared to be crushed at approximately {num} feet from the access point.',
+  'The main sewer line/pipe appeared to be broken at the city tap.',
+  'Root intrusion was visible at the city tap.',
+  'A belly / low point that was holding water and debris was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'The main sewer line/pipe appeared to be cracked at the city tap.',
+  'The main sewer line/pipe appeared to be offset at the city tap.',
+  'Heavy rust / scale was visible in the cast iron portion of the main sewer line/pipe.',
+  'An offset with heavy root intrusion was located in the main sewer line/pipe city tap.',
+  'Heavy grease build up was visible in the main sewer line/pipe.',
+  'The camera was restricted / could not proceed at approximately {num} feet from the access point.',
+  'Due to the heavy intrusion of roots, the main sewer line/pipe was not visible for inspection.',
+  'Due to the heavy intrusion of roots, portions the main sewer line/pipe were not visible for inspection.',
+  'Due to the heavy scale, the interior portion of the main sewer line/pipe was not fully visible for inspection.',
+  'The camera could not advance past {num} feet / was not able to reach city tap, the sewer scope / inspection is limited to areas viewed.',
+  'The main sewer line/pipe appeared to be egg shaped / compressed.',
+  'The main sewer line/pipe appeared to be delaminated / deteriorated.',
+  'The main sewer line/pipe appeared to be Orangeburg / Bermico (Bituminous fiber pipe), there have been documented problems related with this product.',
+  'A crack was visible in the main sewer line/pipe at approximately {num} feet from the access point.',
+  'The main sewer line/pipe was holding water and debris at multiple locations.',
+  'Heavy root intrusion at a joint was visible in the main sewer line/pipe at multiple locations.'
+];
+
+// Append conditions as options
+function addConditions(id) {
+  const defect = id.selector;
+  let placeholder = "Main Line Condition ";
+
+  const defectNum = defect.substr(-1);
+
+  placeholder += defectNum;
+
+  id.append(`<option selected="true" disabled="disabled">${placeholder}</option>`);
+
+  // Loop through conditions
+  conditions.forEach(function (condition, index) {
+    // if '{num}' is present
+    if (condition.indexOf('{num}') >= 0) {
+      id.append(`<option class="number">${condition}</option>`);
+    } else {
+      id.append(`<option>${condition}</option>`);
+    }
+  });
+
+  // add class 'number'
+
+  //id.append('<option>test</option>');
+}
+
 $(document).ready(function() {
+  console.log(conditions.length);
 
   function jsUcfirst(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
@@ -19,6 +82,10 @@ $(document).ready(function() {
       dropdown: true,
       scrollbar: true
   });
+
+  addConditions($('#lineCondition1'));
+  addConditions($('#lineCondition2'));
+  addConditions($('#lineCondition3'));
 
   $('select').change(function() {
     let $this = $(this);
@@ -62,7 +129,8 @@ $(document).ready(function() {
         $value = $(this).children('.editing').text();
       } else if ($label === 'Inspector Recommendations:') {
         $value = $('#recommendations').val();
-        console.log($value);
+      } else if ($(this).attr('id')==="video") {
+        $value = 'https://' + $('#videoUrl').val();
       } else {
         $value = $(this).children('select').val();
       }
@@ -72,8 +140,6 @@ $(document).ready(function() {
     var pdf = new jsPDF('p', 'pt', 'letter');
     pdf.canvas.height = 72 * 11;
     pdf.canvas.width = 72 * 8.5;
-
-    console.log(source);
 
     margins = {
       top: 40,
