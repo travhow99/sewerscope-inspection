@@ -256,6 +256,7 @@ $(document).ready(function() {
       }
 
       res = res.replace($span, '');
+      res = res.replace('+', '');
 
       $(this).html(res);
     });
@@ -276,6 +277,8 @@ $(document).ready(function() {
       let res = $html.replace(dropdown, $selected);
 
       res = res.replace($span, '');
+      res = res.replace('+', '');
+
 
       console.log(res);
 
