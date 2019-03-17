@@ -117,10 +117,11 @@ $(document).ready(function() {
     if ($selected.hasClass('location')) {
       console.log('location');
       const dropdown = `<select class="location-dropdown">
+                          <option>front yard</option>
+                          <option>rear yard</option>
+                          <option>side yard</option>
                           <option>street</option>
-                          <option>yard</option>
                           <option>alley</option>
-                          <option>road</option>
                         </select>`;
       $location = $selected.text().replace('{location}', dropdown);
       $selected.parent().prev().after(`<p class="location-edit">${$location} <span class="remover">x</span></p>`);
@@ -138,7 +139,7 @@ $(document).ready(function() {
     $this.closest('.editing').hide();
 
     $this.closest('.location-edit').siblings('.form-control').show();
-    $this.closest('.location-edit').hide();
+    $this.closest('.location-edit').remove();
   });
 
   // Click function for dynamic .add-range
@@ -263,10 +264,11 @@ $(document).ready(function() {
 
     $('.location-edit').each(function() {
       const dropdown = `<select class="location-dropdown">
+                          <option>front yard</option>
+                          <option>rear yard</option>
+                          <option>side yard</option>
                           <option>street</option>
-                          <option>yard</option>
                           <option>alley</option>
-                          <option>road</option>
                         </select>`;
 
       let $selected = $(this).find('.location-dropdown').children(':selected').val();
