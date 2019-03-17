@@ -37,6 +37,10 @@ input.number-input, input.number-range {
     width: 56px;
 }
 
+#condition4 {
+  display: none;
+}
+
 #submit {
   float: right;
   margin-bottom: 15px;

@@ -296,5 +296,10 @@ $(document).ready(function() {
     generatePDF();
   });
 
+  $('.add-condition').click(function() {
+    $('#condition4').show();
+    $(this).hide();
+  })
+
 
 });
