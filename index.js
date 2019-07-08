@@ -1,6 +1,6 @@
 // TO-DO
-  // And in the located section the street/yard/alley/road should be chang-able options like the footage counter in defects.
-
+// Editable heading for company
+// Add inspector recommendations
 
 const conditions = [
   'Multiple offsets were visible in the main sewer line/pipe.',
@@ -155,9 +155,14 @@ $(document).ready(function() {
 
   function generatePDF() {
     event.preventDefault();
-    let source = `<body><h1>Sewer Scope Inspection</h1>`;
+
+    const title = $('#companyName').val();
+    console.log(title);
+
+    let source = `<body><h1>${title}</h1>`;
 
     var x = $("#mainForm").serializeArray();
+    console.log(x)
     $.each(x, function(i, field){
       source += '<p><strong>' + jsUcfirst(field.name) + ":</strong> " + field.value + '</p>';
     });
@@ -171,14 +176,20 @@ $(document).ready(function() {
       } else if ($(this).has('.location-edit').length !== 0) {
         $value = $(this).children('.location-edit').text();
       } else if ($label === 'Inspector Recommendations:') {
-        $value = $('#recommendations').val();
+        $value = '<br><span style="margin-top:12px">';
+        $.each($('#recommendations input:checked'), function(index, value) {
+          $value += $(value).val();
+        });
+        $value += '</span>';
       } else if ($(this).attr('id')==="video") {
         $value = 'https://' + $('#videoUrl').val();
       } else {
         $value = $(this).children('select').val();
       }
       source += '<p><strong>' + $label + '</strong> ' + $value  + '</p>';
+      // console.log($label, $value);
     });
+    console.log(source);
 
     var pdf = new jsPDF('p', 'pt', 'letter');
     pdf.canvas.height = 72 * 11;
