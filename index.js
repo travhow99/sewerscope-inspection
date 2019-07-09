@@ -176,11 +176,13 @@ $(document).ready(function() {
       } else if ($(this).has('.location-edit').length !== 0) {
         $value = $(this).children('.location-edit').text();
       } else if ($label === 'Inspector Recommendations:') {
-        $value = '<br><span style="margin-top:12px">';
+        $value = '<ul>';
         $.each($('#recommendations input:checked'), function(index, value) {
+          $value += "<li>";
           $value += $(value).val();
+          $value += "</li>";
         });
-        $value += '</span>';
+        $value += '</ul>';
       } else if ($(this).attr('id')==="video") {
         $value = 'https://' + $('#videoUrl').val();
       } else {
