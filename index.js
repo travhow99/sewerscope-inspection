@@ -1,6 +1,36 @@
 // TO-DO
 // Editable heading for company
 // Add inspector recommendations
+function previewFiles() {
+
+  var preview = document.querySelector('#preview');
+  var files   = document.querySelector('input[type=file]').files;
+
+  function readAndPreview(file) {
+
+    // Make sure `file.name` matches our extensions criteria
+    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+      var reader = new FileReader();
+
+      reader.addEventListener("load", function () {
+        var image = new Image();
+        image.height = 100;
+        image.title = file.name;
+        image.src = this.result;
+        preview.appendChild( image );
+      }, false);
+
+      reader.readAsDataURL(file);
+    }
+
+  }
+
+  if (files) {
+    [].forEach.call(files, readAndPreview);
+  }
+
+}
+
 
 const conditions = [
   'Multiple offsets were visible in the main sewer line/pipe.',
@@ -152,7 +182,6 @@ $(document).ready(function() {
     $(this).replaceWith(rangeElement);
   });
 
-
   function generatePDF() {
     event.preventDefault();
 
@@ -194,6 +223,10 @@ $(document).ready(function() {
     console.log(source);
 
     var pdf = new jsPDF('p', 'pt', 'letter');
+    
+    // TODO: Get image data
+
+
     pdf.canvas.height = 72 * 11;
     pdf.canvas.width = 72 * 8.5;
 
@@ -203,8 +236,6 @@ $(document).ready(function() {
       left: 40,
       width: 522
     };
-
-
 
     pdf.fromHTML(
       source,
@@ -220,35 +251,28 @@ $(document).ready(function() {
 
       }, margins);
 
-      let pdfBase64 = pdf.output('datauristring');
-/*
-      window.plugin.email.open({
-        to: [''],
-        subject: 'New PDF!',
-        body: 'Hi there, here is that new PDF you wanted!',
-        isHTML: false,
-        attachments: [pdfBase64]
+      // Gather images
+      const imgArray = [];
+      if ($('#preview img').length >= 1) {
+        $('#preview img').each(function(i, el) {
+          let src = $(el)[0].src;
+          imgArray.push(src);
+          // let final = src.split(',');
+          // imgArray.push(final[1]);
+        });
+      }
+      
+      // Loop through images and add
+      let top = 480;
+      imgArray.map((e) => {
+        pdf.addImage(e, 'JPEG', 15, top, 180, 160);
+        top += 100;
       });
-*/
+
+    let pdfBase64 = pdf.output('datauristring');
+
     pdf.save('sewerscope-report.pdf');
 
-/*
-    let $formData = $('#mainForm');
-    console.log($formData);
-    var txt = "";
-    var i;
-    for (i = 0; i < $formData.length; i++) {
-      txt = txt + $formData.elements[i].value + "<br>";
-    }
-    console.log(txt);
-
-
-    console.log('clicked');
-    var doc = new jsPDF()
-
-    doc.text('Hello world!', 10, 10)
-    doc.save('a4.pdf')
-*/
   }
 
   function gatherData() {

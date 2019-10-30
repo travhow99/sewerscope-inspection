@@ -41,6 +41,8 @@ input.number-input, input.number-range {
   display: none;
 }
 
+#preview img { max-height: 100px; }
+
 #submit {
   float: right;
   margin-bottom: 15px;
