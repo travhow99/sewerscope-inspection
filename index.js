@@ -31,6 +31,15 @@ function previewFiles() {
 
 }
 
+function gatherImages() {
+  let fileInput = document.getElementById('browse');
+  let files = fileInput.files;
+
+  files = Object.entries(files);
+
+  return files;
+}
+
 
 const conditions = [
   'Multiple offsets were visible in the main sewer line/pipe.',
@@ -222,7 +231,40 @@ $(document).ready(function() {
     });
     console.log(source);
 
-    var pdf = new jsPDF('p', 'pt', 'letter');
+/*     const imgArray = [];
+      if ($('#preview img').length >= 1) {
+        $('#preview img').each(function(i, el) {
+          let src = $(el)[0].src;
+          imgArray.push(src);
+          // let final = src.split(',');
+          // imgArray.push(final[1]);
+        });
+      }
+
+      // Loop through images and add
+      imgArray.map((e) => {
+        console.log(e);
+        source += `<img src="${e}" style="width: 50%; height: auto;" />`;
+      });
+
+      $.post('./pdf/generate-pdf.php', {source}, function(response) {
+        console.log(response);
+      }); */
+
+      let images = gatherImages();
+
+      let formData = new FormData();
+
+      console.log(images);
+
+      images.map((x) => {
+        console.log(x);
+        // Append to formData
+      });
+
+    return;
+
+/*     var pdf = new jsPDF('p', 'pt', 'letter');
     
     // TODO: Get image data
 
@@ -261,7 +303,7 @@ $(document).ready(function() {
           // imgArray.push(final[1]);
         });
       }
-      
+
       // Loop through images and add
       let top = 480;
       imgArray.map((e) => {
@@ -271,7 +313,7 @@ $(document).ready(function() {
 
     let pdfBase64 = pdf.output('datauristring');
 
-    pdf.save('sewerscope-report.pdf');
+    pdf.save('sewerscope-report.pdf'); */
 
   }
 
