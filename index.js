@@ -35,7 +35,7 @@ function gatherImages() {
   let fileInput = document.getElementById('browse');
   let files = fileInput.files;
 
-  files = Object.entries(files);
+  // files = Object.entries(files);
 
   return files;
 }
@@ -247,9 +247,7 @@ $(document).ready(function() {
         source += `<img src="${e}" style="width: 50%; height: auto;" />`;
       });
 
-      $.post('./pdf/generate-pdf.php', {source}, function(response) {
-        console.log(response);
-      }); */
+       */
 
       let images = gatherImages();
 
@@ -257,9 +255,25 @@ $(document).ready(function() {
 
       console.log(images);
 
-      images.map((x) => {
-        console.log(x);
+      Object.keys(images).map((x) => {
+        console.log(images[x]);
+        formData.append('images[]', images[x]);
+        // formData.append('images[]', x[1], `image${x}.jpg`);
         // Append to formData
+      });
+
+      formData.append('text', source);
+
+      console.log(formData);
+
+      $.ajax({
+        type: 'POST',
+        url: './',
+        data:/* {source} */formData,
+        processData: false,
+        contentType: false
+       }).done(function(response) {
+        console.log(response);
       });
 
     return;

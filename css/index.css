@@ -5,6 +5,7 @@ html, body {
   color: white!important;
   font-family: 'Cardo', serif !important;
   font-size: 16px !important;
+  margin-bottom: 100px!important;
 }
 
 .container.form {

@@ -1,3 +1,54 @@
+<?php
+  // include autoloader
+  require_once 'pdf/dompdf/autoload.inc.php';
+
+  // reference the Dompdf namespace
+  use Dompdf\Dompdf;
+
+// echo $_POST['source'];
+// var_dump($_FILES['images']);
+/* foreach ($_FILES['images']['tmp_name'] as $file) {
+    var_dump($file);
+    $html .= "<img src='".$file['tmp_name']."'>";
+} */
+
+if (!empty($_POST)) {
+
+  // instantiate and use the dompdf class
+  $dompdf = new Dompdf();
+
+  $html = '<h3>Hello World</h3>';
+
+  // Count total files
+  $countfiles = count($_FILES['images']['name']);
+  
+  // Looping all files
+  for($i=0;$i<$countfiles;$i++){
+    $filename = $_FILES['images']['name'][$i];
+    
+    // Upload file
+  //    move_uploaded_file($_FILES['file']['tmp_name'][$i],'upload/'.$filename);
+      $html .= "<img src='".$_FILES['images']['tmp_name'][$i]."' />";
+  }
+
+  $dompdf->loadHtml($html);
+
+  echo $html;
+
+  // (Optional) Setup the paper size and orientation
+  $dompdf->setPaper('A4');
+
+  // Render the HTML as PDF
+  $dompdf->render();
+
+  // Output the generated PDF to Browser
+  $dompdf->stream('report',array('Attachment'=>1));
+
+  // echo 'help';
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +63,11 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#db000d">
   <meta name="theme-color" content="#db000d">
   <!-- <meta http-equiv=”Refresh” content=”0;URL=https://www.yourdomainname.com”> -->
@@ -229,7 +280,7 @@
 
         <div class="form-group">
           <label for="">Upload Images:</label>
-          <input id="browse" type="file" onchange="previewFiles()" multiple>
+          <input id="browse" name="files[]" type="file" onchange="previewFiles()" multiple>
           <div id="preview"></div>          
         </div>
 
