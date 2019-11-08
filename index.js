@@ -226,7 +226,9 @@ $(document).ready(function() {
       } else {
         $value = $(this).children('select').val();
       }
-      source += '<p><strong>' + $label + '</strong> ' + $value  + '</p>';
+      if ($value) {
+        source += '<p><strong>' + $label + '</strong> ' + $value  + '</p>';
+      }
       // console.log($label, $value);
     });
     console.log(source);
@@ -268,11 +270,15 @@ $(document).ready(function() {
 
       $.ajax({
         type: 'POST',
-        url: './',
-        data:/* {source} */formData,
+        url: 'pdf/generate-pdf.php',
+        data: formData,
         processData: false,
         contentType: false
        }).done(function(response) {
+        if (response == 'success') {
+          console.log('test')
+          location.reload();
+        }
         console.log(response);
       });
 

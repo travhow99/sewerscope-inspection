@@ -1,51 +1,17 @@
 <?php
-  // include autoloader
-  require_once 'pdf/dompdf/autoload.inc.php';
+$file = __DIR__.'/pdf/report.pdf';
 
-  // reference the Dompdf namespace
-  use Dompdf\Dompdf;
-
-// echo $_POST['source'];
-// var_dump($_FILES['images']);
-/* foreach ($_FILES['images']['tmp_name'] as $file) {
-    var_dump($file);
-    $html .= "<img src='".$file['tmp_name']."'>";
-} */
-
-if (!empty($_POST)) {
-
-  // instantiate and use the dompdf class
-  $dompdf = new Dompdf();
-
-  $html = '<h3>Hello World</h3>';
-
-  // Count total files
-  $countfiles = count($_FILES['images']['name']);
-  
-  // Looping all files
-  for($i=0;$i<$countfiles;$i++){
-    $filename = $_FILES['images']['name'][$i];
-    
-    // Upload file
-  //    move_uploaded_file($_FILES['file']['tmp_name'][$i],'upload/'.$filename);
-      $html .= "<img src='".$_FILES['images']['tmp_name'][$i]."' />";
-  }
-
-  $dompdf->loadHtml($html);
-
-  echo $html;
-
-  // (Optional) Setup the paper size and orientation
-  $dompdf->setPaper('A4');
-
-  // Render the HTML as PDF
-  $dompdf->render();
-
-  // Output the generated PDF to Browser
-  $dompdf->stream('report',array('Attachment'=>1));
-
-  // echo 'help';
-  exit;
+if (file_exists($file)) {
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename="'.basename($file).'"');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize($file));
+    readfile($file);
+    unlink($file);
+    exit;
 }
 ?>
 

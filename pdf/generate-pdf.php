@@ -3,8 +3,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+require_once 'dompdf/autoload.inc.php';
 
-// echo __DIR__."/../";
+use Dompdf\Dompdf;
+
+
+$dir = __DIR__."/../";
 // die();
 
 // Create file if !exists
@@ -17,7 +21,7 @@ error_reporting(E_ALL);
 // Delete file
 $file = fopen('report.html', 'w') or die("Unable to open file!");
 
-$html = '<h3>Hello World</h3>';
+$html = $_POST['text'];
 
 // echo $_POST['source'];
 // var_dump($_FILES['images']);
@@ -26,25 +30,28 @@ $html = '<h3>Hello World</h3>';
     $html .= "<img src='".$file['tmp_name']."'>";
 } */
 
+$html .= '<br><br>';
  // Count total files
- $countfiles = count($_FILES['images']['name']);
- 
- // Looping all files
- for($i=0;$i<$countfiles;$i++){
-   $filename = $_FILES['images']['name'][$i];
-   
-   // Upload file
-//    move_uploaded_file($_FILES['file']['tmp_name'][$i],'upload/'.$filename);
-    $html .= "<img src='".$_FILES['images']['tmp_name'][$i]."' />";
- }
+ if (isset($_FILES['images'])) {
+    $countfiles = count($_FILES['images']['name']);
+    
+    // Looping all files
+    for($i=0;$i<$countfiles;$i++){
+    $filename = $_FILES['images']['name'][$i];
+    
+    // Upload file
+    //    move_uploaded_file($_FILES['file']['tmp_name'][$i],'upload/'.$filename);
+        $html .= "<img style='margin-left: 10px;' height='150' width='auto' src='".$_FILES['images']['tmp_name'][$i]."' />";
+    }
+}
 
- fwrite($file, $html);
- fclose($file);
+//  fwrite($file, $html);
+//  fclose($file);
 
 //  Save file
-file_put_contents('report.html', $file);
+// file_put_contents($dir.'report.html', $file);
 
-/* 
+$dompdf = new Dompdf();
 
 $dompdf->loadHtml($html);
 
@@ -55,7 +62,9 @@ $dompdf->setPaper('A4');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream();
- */
-?>
+// $dompdf->stream("sample.pdf");
+
+file_put_contents('report.pdf', $dompdf->output());
+
+echo 'success';
 
