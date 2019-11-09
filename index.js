@@ -1,6 +1,7 @@
 function previewFiles() {
 
   var preview = document.querySelector('#preview');
+  preview.innerHTML = '';
   var files   = document.querySelector('input[type=file]').files;
 
   function readAndPreview(file) {
@@ -39,6 +40,7 @@ function previewFiles() {
 
 }
 
+// TODO: Remove file from File Input list...
 $('body').on('click', '.img-remover', function() {
   $(this).prev('img, span').remove();
   $(this).remove();
@@ -285,11 +287,22 @@ $(document).ready(function() {
 
       console.log(images);
 
+      const activeImages = [];
+
+      $('#preview img').each((i, e) => {
+          activeImages.push($(e).attr('title'));
+      });
+
       Object.keys(images).map((x) => {
-        console.log(images[x]);
+        console.log(images[x].name);
+
+        // If image has been removed
+        // don't send with formdata
+        if (activeImages.indexOf(images[x].name) === -1) {
+          return;
+        }
+        
         formData.append('images[]', images[x]);
-        // formData.append('images[]', x[1], `image${x}.jpg`);
-        // Append to formData
       });
 
       formData.append('text', source);
