@@ -1,20 +1,3 @@
-<?php
-$file = __DIR__.'/pdf/report.pdf';
-
-if (file_exists($file)) {
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="'.basename($file).'"');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file));
-    readfile($file);
-    unlink($file);
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +17,8 @@ if (file_exists($file)) {
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
   <link rel="manifest" href="./site.webmanifest">
   <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
   <meta name="msapplication-TileColor" content="#db000d">
   <meta name="theme-color" content="#db000d">
   <!-- <meta http-equiv=”Refresh” content=”0;URL=https://www.yourdomainname.com”> -->
@@ -256,7 +241,6 @@ if (file_exists($file)) {
 
 
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

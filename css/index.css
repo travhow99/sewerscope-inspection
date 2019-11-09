@@ -26,6 +26,19 @@ form {
   vertical-align: super;
 }
 
+.img-remover {
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+}
+
+#preview div {
+  position: relative;
+  display: inline-block;
+}
+
 .add-range {
   cursor: pointer;
   vertical-align: super;
@@ -43,7 +56,17 @@ input.number-input, input.number-range {
   display: none;
 }
 
-#preview img { max-height: 100px; }
+#preview {
+  position: relative;  
+}
+
+#preview div {
+  margin-left: 20px;
+}
+
+#preview img { 
+  max-height: 100px;
+ }
 
 #submit {
   float: right;

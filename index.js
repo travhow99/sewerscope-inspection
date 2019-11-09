@@ -1,6 +1,3 @@
-// TO-DO
-// Editable heading for company
-// Add inspector recommendations
 function previewFiles() {
 
   var preview = document.querySelector('#preview');
@@ -13,11 +10,22 @@ function previewFiles() {
       var reader = new FileReader();
 
       reader.addEventListener("load", function () {
+        var container = document.createElement('div');
+        var span = document.createElement('span');
+        span.classList.add('img-remover');
+
+        var x = document.createTextNode('x');
+        span.appendChild(x);
+
         var image = new Image();
         image.height = 100;
         image.title = file.name;
         image.src = this.result;
-        preview.appendChild( image );
+
+        container.appendChild(image);
+        container.appendChild(span);
+
+        preview.appendChild(container);
       }, false);
 
       reader.readAsDataURL(file);
@@ -30,6 +38,42 @@ function previewFiles() {
   }
 
 }
+
+$('body').on('click', '.img-remover', function() {
+  $(this).prev('img, span').remove();
+  $(this).remove();
+});
+
+// Select the node that will be observed for mutations
+const targetNode = document.getElementById('preview');
+
+// Options for the observer (which mutations to observe)
+const config = { attributes: true, childList: true, subtree: true };
+
+// Callback function to execute when mutations are observed
+const callback = function(mutationsList, observer) {
+    for(let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            console.log('A child node has been added or removed.');
+        }
+        else if (mutation.type === 'attributes') {
+            console.log('The ' + mutation.attributeName + ' attribute was modified.');
+        }
+    }
+
+    // observer.disconnect();
+    // addImgRemover();
+    // observer.observe(targetNode, config);
+};
+
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+
+// Later, you can stop observing
+
 
 function gatherImages() {
   let fileInput = document.getElementById('browse');
@@ -105,6 +149,8 @@ function addConditions(id) {
 }
 
 $(document).ready(function() {
+  $(this).scrollTop(0);
+
   // Include Bootstrap tooltip for dynamic element
   $('[data-toggle="tooltip"]').tooltip();
 
@@ -226,30 +272,12 @@ $(document).ready(function() {
       } else {
         $value = $(this).children('select').val();
       }
-      if ($value) {
+      if ($value && $value !== 'https://' && $value !== '') {
         source += '<p><strong>' + $label + '</strong> ' + $value  + '</p>';
       }
       // console.log($label, $value);
     });
     console.log(source);
-
-/*     const imgArray = [];
-      if ($('#preview img').length >= 1) {
-        $('#preview img').each(function(i, el) {
-          let src = $(el)[0].src;
-          imgArray.push(src);
-          // let final = src.split(',');
-          // imgArray.push(final[1]);
-        });
-      }
-
-      // Loop through images and add
-      imgArray.map((e) => {
-        console.log(e);
-        source += `<img src="${e}" style="width: 50%; height: auto;" />`;
-      });
-
-       */
 
       let images = gatherImages();
 
@@ -277,63 +305,12 @@ $(document).ready(function() {
        }).done(function(response) {
         if (response == 'success') {
           console.log('test')
-          location.reload();
+          // location.reload();
+          window.open('pdf/report.pdf', '_blank');
         }
-        console.log(response);
       });
 
     return;
-
-/*     var pdf = new jsPDF('p', 'pt', 'letter');
-    
-    // TODO: Get image data
-
-
-    pdf.canvas.height = 72 * 11;
-    pdf.canvas.width = 72 * 8.5;
-
-    margins = {
-      top: 40,
-      bottom: 60,
-      left: 40,
-      width: 522
-    };
-
-    pdf.fromHTML(
-      source,
-      margins.left,
-      margins.top, {
-        'width': margins.width,
-      },
-
-      function (dispose) {
-        // dispose: object with X, Y of the last line add to the PDF
-        //          this allow the insertion of new lines after html
-        //pdf.save('Test.pdf');
-
-      }, margins);
-
-      // Gather images
-      const imgArray = [];
-      if ($('#preview img').length >= 1) {
-        $('#preview img').each(function(i, el) {
-          let src = $(el)[0].src;
-          imgArray.push(src);
-          // let final = src.split(',');
-          // imgArray.push(final[1]);
-        });
-      }
-
-      // Loop through images and add
-      let top = 480;
-      imgArray.map((e) => {
-        pdf.addImage(e, 'JPEG', 15, top, 180, 160);
-        top += 100;
-      });
-
-    let pdfBase64 = pdf.output('datauristring');
-
-    pdf.save('sewerscope-report.pdf'); */
 
   }
 
