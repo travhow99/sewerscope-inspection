@@ -319,7 +319,7 @@ $(document).ready(function() {
         if (response == 'success') {
           console.log('test')
           // location.reload();
-          window.open('pdf/report.pdf', '_blank');
+          window.open('pdf/report.pdf?' + (new Date()).getTime(), '_blank');
         }
       });
 

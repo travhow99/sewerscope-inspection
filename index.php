@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>sReport</title>
+  <title>Sewer Scope Report</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -231,7 +231,7 @@
 
         <div class="form-group">
           <label for="">Upload Images:</label>
-          <input id="browse" name="files[]" type="file" onchange="previewFiles()" multiple>
+          <input id="browse" name="files[]" type="file" onchange="previewFiles()" accept="image/*" multiple>
           <div id="preview"></div>          
         </div>
 
@@ -245,16 +245,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script src="index.js"></script>
+<script src="app.js"></script>
 
-  <!-- <script src="/upup.min.js"></script> -->
-  <script>
-    /* UpUp.start({
-      'content-url': 'offline.html',
-      'assets': ['css/bootstrap.min.css', 'css/offline.css']
-    }); */
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 </html>

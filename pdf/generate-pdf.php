@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require_once 'dompdf/autoload.inc.php';
 
 use Dompdf\Dompdf;
@@ -19,6 +15,14 @@ $dir = __DIR__."/../";
 // Convert file to PDF 
 // Download file
 // Delete file
+if (file_exists('report.html')) {
+    chmod('report.html', 0755);
+}
+
+if (file_exists('report.pdf')) {
+    chmod('report.pdf', 0755);
+}
+
 $file = fopen('report.html', 'w') or die("Unable to open file!");
 
 $html = $_POST['text'];
