@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Sewer Scope Report</title>
   <meta charset="utf-8">
@@ -24,12 +25,13 @@
   <!-- <meta http-equiv=”Refresh” content=”0;URL=https://www.yourdomainname.com”> -->
 
 </head>
+
 <body>
   <div class="container form">
     <form id="mainForm">
       <div class="input">
-          <label for="companyName">Title:</label>
-          <input type="text" id="companyName" class="form-control" placeholder="Your company name" />
+        <label for="companyName">Title:</label>
+        <input type="text" id="companyName" class="form-control" placeholder="Your company name" />
       </div>
       <div class="input">
         <label for="address">Property Address:</label>
@@ -45,208 +47,385 @@
       </div>
       <hr />
 
-        <div class="form-group">
-          <label for="location">Location of Scope / Access:</label>
-          <select class="form-control" id="location">
-            <option selected="true" disabled="disabled">Choose an Item</option>
-            <option>Mechanical Room Wall Cleanout</option>
-            <option>Basement Wall Cleanout</option>
-            <option>Basement Mechanical Room Wall Cleanout</option>
-            <option>Basement Floor Cleanout</option>
-            <option>Crawlspace Cleanout</option>
-            <option>Main Level Cleanout</option>
-            <option>Roof Vent</option>
-            <option>Floor Drain</option>
-            <option>Floor Drain Vent</option>
-            <option>Kitchen Waste Line</option>
-            <option>Laundry Cleanout</option>
-            <option>Garage Cleanout</option>
-            <option>Basement Laundry Cleanout</option>
-            <option>Cleanout located at the exterior of the house.</option>
-          </select>
+      <div class="form-group">
+        <label for="location">Location of Scope / Access:</label>
+        <select class="form-control" id="location">
+          <option selected="true" disabled="disabled">Choose an Item</option>
+          <option>Mechanical Room Wall Cleanout</option>
+          <option>Basement Wall Cleanout</option>
+          <option>Basement Mechanical Room Wall Cleanout</option>
+          <option>Basement Floor Cleanout</option>
+          <option>Crawlspace Cleanout</option>
+          <option>Main Level Cleanout</option>
+          <option>Roof Vent</option>
+          <option>Floor Drain</option>
+          <option>Floor Drain Vent</option>
+          <option>Kitchen Waste Line</option>
+          <option>Laundry Cleanout</option>
+          <option>Garage Cleanout</option>
+          <option>Basement Laundry Cleanout</option>
+          <option>Cleanout located at the exterior of the house.</option>
+          <option>Toilet</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="condition">Condition of Cleanouts:</label>
+        <select class="form-control" id="condition">
+          <option selected="true" disabled="disabled">Choose an Item</option>
+          <option>Excessive corrosion was found near the main cleanout.</option>
+          <option>Serviceable</option>
+          <option>The cleanout fittings were not visible / accessible.</option>
+          <option>The cleanout cap was leaking.</option>
+          <option>The cleanout cap was damaged.</option>
+          <option>The cleanout fitting threads were corroded / damaged.</option>
+          <option>The exterior cleanouts appeared to be buried / were not accessible for inspection.</option>
+          <option>There appeared to be over 100 feet between cleanouts in the lateral / main sewer line.</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="underfloor">Underfloor Interior Line/Pipe:</label>
+        <select class="form-control" id="underfloor">
+          <option selected="true" disabled="disabled">Underfloor Line Material</option>
+          <option>Cast Iron</option>
+          <option>Cast Iron and PVC</option>
+          <option>Cast Iron and ABS</option>
+          <option>PVC (Polyvinyl chloride)</option>
+          <option>ABS (Acrylonitrile butadiene styrene)</option>
+          <option>Plastic</option>
+          <option>Galvanized Steel</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="underground">Underground Exterior/Lateral Line/ Pipe:</label>
+        <select class="form-control" id="underground">
+          <option selected="true" disabled="disabled">Lateral Line Material</option>
+          <option>PVC (Polyvinyl chloride)</option>
+          <option>SDR 35 (Standard Dimensional Ratio PVC)</option>
+          <option>PVC (Polyvinyl chloride) and SDR 35 (Standard Dimensional Ratio PVC)</option>
+          <option>ABS (Acrylonitrile butadiene styrene)</option>
+          <option>Clay</option>
+          <option>Clay and SDR 35 (Standard Dimensional Ratio PVC)</option>
+          <option>Concrete</option>
+          <option>Appeared to be Transite / Asbestos Cement</option>
+          <option>Concrete and Transite / Asbestos Cement</option>
+          <option>Plastic / High density polyethylene (HDPE)</option>
+          <option>Appeared to be Orangeburg / Bermico (Bituminous fiber pipe)</option>
+          <option>Cured in place pipe / Epoxy fiberglass</option>
+          <option>SDR 35 (Standard Dimensional Ratio PVC) and Plastic / High density polyethylene (HDPE)</option>
+          <option>PVC (Polyvinyl chloride) and Clay</option>
+          <option>Clay and Concrete</option>
+        </select>
+      </div>
+
+      <!-- Needs editable input !-->
+      <div class="form-group">
+        <label for="mainLine">Length of Main Line/Pipe:</label>
+        <select class="form-control" id="mainLine">
+          <option selected="true" disabled="disabled">Length of Line</option>
+          <option class="number">The main sewer line/pipe was approximately {num} feet from the access point to the city tap.</option>
+          <option class="number">The main sewer line/pipe was approximately {num} feet from the access point to the HOA tap.</option>
+          <option class="number">The main sewer line/pipe was approximately {num} feet from the access point to the city tap.</option>
+          <option class="number">The main sewer line/pipe was approximately {num} feet from the access point to the septic tap.</option>
+          <option>Unknown, unable to reach city tap.</option>
+        </select>
+      </div>
+
+      <!-- Needs editable input !-->
+      <div class="form-group">
+        <label for="lineCondition1">Main Sewer Line/Pipe Condition:</label>
+        <select class="form-control" id="lineCondition1">
+        </select>
+      </div>
+
+      <!-- Needs editable input !-->
+      <div class="form-group">
+        <label for="lineCondition2">Main Sewer Line/Pipe Condition:</label>
+        <select class="form-control" id="lineCondition2">
+        </select>
+      </div>
+
+      <!-- Needs editable input !-->
+      <div class="form-group">
+        <label for="lineCondition3">Main Sewer Line/Pipe Condition:</label>
+        <select class="form-control" id="lineCondition3">
+        </select>
+      </div>
+
+      <div class="" style="text-align:right">
+        <a class="btn btn-primary add-condition">Additional Condition</a>
+      </div>
+
+      <div class="form-group" id="condition4">
+        <label for="lineCondition4">Main Sewer Line/Pipe Condition:</label>
+        <select class="form-control" id="lineCondition4">
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="defects">Located Defects:</label>
+        <select class="form-control" id="underfloor">
+          <option selected="true" disabled="disabled">Located Defects</option>
+          <option>None</option>
+          <option class="location">Heavy root growth/accumulation was located and marked in the {location}.</option>
+          <option class="location">An offset was located and marked in the {location}.</option>
+          <option class="location">A crack in the main sewer line/pipe was located and marked in the {location}.</option>
+          <option class="location">The belly/area that was holding water and debris in the main sewer line/pipe was located and marked in the {location}.</option>
+          <option class="location">A break in the main sewer line/pipe was located and marked in the {location}.</option>
+          <option class="location">The damaged tap was located and marked in the {location}.</option>
+          <option>The lateral sewer line was located and marked from the house to the city tap.</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="video">
+        <label>Video URL:</label>
+        <div class="input-group">
+          <span class="input-group-addon">https://</span>
+          <input type="website" id="videoUrl" class="form-control">
+        </div>
+      </div>
+
+      <!-- TODO: Turn into dropdown (w/ dyhnamic option to add more?) -->
+      <div class="form-group" id="recommendations">
+        <label for="recommendations">Inspector Recommendations:</label>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The building sewer / lateral sewer line/pipe should be replaced.">
+            The building sewer / lateral sewer line/pipe should be replaced.
+          </label>
         </div>
 
-        <div class="form-group">
-          <label for="condition">Condition of Cleanouts:</label>
-          <select class="form-control" id="condition">
-            <option selected="true" disabled="disabled">Choose an Item</option>
-            <option>Excessive corrosion was found near the main cleanout.</option>
-            <option>Serviceable</option>
-            <option>The cleanout fittings were not visible / accessible.</option>
-            <option>The cleanout cap was leaking.</option>
-            <option>The cleanout cap was damaged.</option>
-            <option>The cleanout fitting threads were corroded / damaged.</option>
-            <option>The exterior cleanouts appeared to be buried / were not accessible for inspection.</option>
-            <option>There appeared to be over 100 feet between cleanouts in the lateral / main sewer line.</option>
-          </select>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The building sewer / lateral sewer line/pipe should be replaced using the dig and trench method.">
+            The building sewer / lateral sewer line/pipe should be replaced using the dig and trench method.
+          </label>
         </div>
 
-        <div class="form-group">
-          <label for="underfloor">Underfloor Interior Line/Pipe:</label>
-          <select class="form-control" id="underfloor">
-            <option selected="true" disabled="disabled">Underfloor Line Material</option>
-            <option>Cast Iron</option>
-            <option>Cast Iron and PVC</option>
-            <option>Cast Iron and ABS</option>
-            <option>PVC (Polyvinyl chloride)</option>
-            <option>ABS (Acrylonitrile butadiene styrene)</option>
-            <option>Plastic</option>
-            <option>Galvanized Steel</option>
-          </select>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The building sewer / lateral sewer line/pipe should be replaced using the pipe burst method.">
+            The building sewer / lateral sewer line/pipe should be replaced using the pipe burst method.
+          </label>
         </div>
 
-        <div class="form-group">
-          <label for="underground">Underground Exterior/Lateral Line/ Pipe:</label>
-          <select class="form-control" id="underground">
-            <option selected="true" disabled="disabled">Lateral Line Material</option>
-            <option>PVC (Polyvinyl chloride)</option>
-            <option>SDR 35 (Standard Dimensional Ratio PVC)</option>
-            <option>PVC (Polyvinyl chloride) and SDR 35 (Standard Dimensional Ratio PVC)</option>
-            <option>ABS (Acrylonitrile butadiene styrene)</option>
-            <option>Clay</option>
-            <option>Clay and SDR 35 (Standard Dimensional Ratio PVC)</option>
-            <option>Concrete</option>
-            <option>Appeared to be Transite / Asbestos Cement</option>
-            <option>Concrete and Transite / Asbestos Cement</option>
-            <option>Plastic / High density polyethylene (HDPE)</option>
-            <option>Appeared to be Orangeburg / Bermico (Bituminous fiber pipe)</option>
-            <option>Cured in place pipe / Epoxy fiberglass</option>
-            <option>SDR 35 (Standard Dimensional Ratio PVC) and Plastic / High density polyethylene (HDPE)</option>
-            <option>PVC (Polyvinyl chloride) and Clay</option>
-            <option>Clay and Concrete</option>
-          </select>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The building sewer / lateral sewer line/pipe should be relined using a CIPP (cured in place pipe).">
+            The building sewer / lateral sewer line/pipe should be relined using a CIPP (cured in place pipe).
+          </label>
         </div>
 
-        <!-- Needs editable input !-->
-        <div class="form-group">
-          <label for="mainLine">Length of Main Line/Pipe:</label>
-          <select class="form-control" id="mainLine">
-            <option selected="true" disabled="disabled">Length of Line</option>
-            <option class="number">The main sewer line/pipe was approximately {num} feet from the access point to the city tap.</option>
-            <option class="number">The main sewer line/pipe was approximately {num} feet from the access point to the HOA tap.</option>
-            <option class="number">The main sewer line/pipe was approximately {num} feet from the access point to the city tap.</option>
-            <option class="number">The main sewer line/pipe was approximately {num} feet from the access point to the septic tap.</option>
-            <option>Unknown, unable to reach city tap.</option>
-          </select>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="Approximately -- feet of the building sewer / lateral sewer line should be replaced {num}.">
+            Approximately -- feet of the building sewer / lateral sewer line should be replaced {num}.
+          </label>
         </div>
 
-        <!-- Needs editable input !-->
-        <div class="form-group">
-          <label for="lineCondition1">Main Sewer Line/Pipe Condition:</label>
-          <select class="form-control" id="lineCondition1">
-          </select>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="Approximately -- feet of the building sewer / lateral sewer line should be relined using a CIPP (cured in place pipe), {num}.">
+            Approximately -- feet of the building sewer / lateral sewer line should be relined using a CIPP (cured in place pipe), {num}.
+          </label>
         </div>
 
-        <!-- Needs editable input !-->
-        <div class="form-group">
-          <label for="lineCondition2">Main Sewer Line/Pipe Condition:</label>
-          <select class="form-control" id="lineCondition2">
-          </select>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="A partial CIPP (cured in place pipe) should be installed in the building sewer / lateral sewer line/pipe at approximately {num}.">
+            A partial CIPP (cured in place pipe) should be installed in the building sewer / lateral sewer line/pipe at approximately {num}.
+          </label>
         </div>
 
-        <!-- Needs editable input !-->
-        <div class="form-group">
-          <label for="lineCondition3">Main Sewer Line/Pipe Condition:</label>
-          <select class="form-control" id="lineCondition3">
-          </select>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="Exterior clean-outs should be installed in the building sewer / lateral sewer line near the house.">
+            Exterior clean-outs should be installed in the building sewer / lateral sewer line near the house.
+          </label>
         </div>
 
-        <div class="" style="text-align:right">
-          <a class="btn btn-primary add-condition">Additional Condition</a>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The interior section of the building drain / main sewer line/pipe should be replaced.">
+            The interior section of the building drain / main sewer line/pipe should be replaced.
+          </label>
         </div>
 
-        <div class="form-group" id="condition4">
-          <label for="lineCondition4">Main Sewer Line/Pipe Condition:</label>
-          <select class="form-control" id="lineCondition4">
-          </select>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The cast iron portion of the building drain / main sewer line/pipe should be cleaned.">
+            The cast iron portion of the building drain / main sewer line/pipe should be cleaned.
+          </label>
         </div>
 
-        <div class="form-group">
-          <label for="defects">Located Defects:</label>
-          <select class="form-control" id="underfloor">
-            <option selected="true" disabled="disabled">Located Defects</option>
-            <option>None</option>
-            <option class="location">Heavy root growth/accumulation was located and marked in the {location}.</option>
-            <option class="location">An offset was located and marked in the {location}.</option>
-            <option class="location">A crack in the main sewer line/pipe was located and marked in the {location}.</option>
-            <option class="location">The belly/area that was holding water and debris in the main sewer line/pipe was located and marked in the {location}.</option>
-            <option class="location">A break in the main sewer line/pipe was located and marked in the {location}.</option>
-            <option class="location">The damaged tap was located and marked in the {location}.</option>
-            <option>The lateral sewer line was located and marked from the house to the city tap.</option>
-          </select>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The cast iron portion of the building drain / main sewer line/pipe should be cleaned with metal blades.">
+            The cast iron portion of the building drain / main sewer line/pipe should be cleaned with metal blades.
+          </label>
         </div>
 
-        <div class="form-group" id="video">
-          <label>Video URL:</label>
-          <div class="input-group">
-            <span class="input-group-addon">https://</span>
-            <input type="website" id="videoUrl" class="form-control">
-          </div>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The cast iron portion of the building drain / main sewer line/pipe should be cleaned by hydro-jetting.">
+            The cast iron portion of the building drain / main sewer line/pipe should be cleaned by hydro-jetting.
+          </label>
         </div>
 
-        <div class="form-group" id="recommendations">
-          <label for="recommendations">Inspector Recommendations:</label>
-          <div class="checkbox">
-            <label><input type="checkbox" value="The main sewer line/pipe should be cleaned for roots and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be cleaned for roots and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
-          </div>
 
-          <div class="checkbox">
-            <label><input type="checkbox" value="The main sewer line/pipe should be cleaned for roots annually to minimize the potential for blockage." />The main sewer line/pipe should be cleaned for roots annually to minimize the potential for blockage.</label>
-          </div>
-
-          <div class="checkbox">
-            <label><input type="checkbox" value="The main sewer line/pipe should be cleaned of scale / hydro-jetted and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be cleaned of scale / hydro-jetted and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
-          </div>
-
-          <div class="checkbox">
-            <label><input type="checkbox" value="The main sewer line/pipe should be repaired or replaced as needed and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be repaired or replaced as needed and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
-          </div>
-
-          <div class="checkbox">
-            <label><input type="checkbox" value="The main sewer line/pipe should be hydro-jetted and repaired as needed and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be hydro-jetted and repaired as needed and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
-          </div>
-
-          <div class="checkbox">
-            <label><input type="checkbox" value="The main sewer line/pipe appeared to be Orangeburg / Bermico (Bituminous fiber pipe); the main sewer line should be replaced before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe appeared to be Orangeburg / Bermico (Bituminous fiber pipe); the main sewer line should be replaced before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
-          </div>
-
-          <div class="checkbox">
-            <label><input type="checkbox" value="The exterior main sewer line/pipe showed evidence of past cleanings; consult with the Real Estate Professional / Seller as to the frequency of maintenance performed to estimate costs / expenses related to continued maintenance.">The exterior main sewer line/pipe showed evidence of past cleanings; consult with the Real Estate Professional / Seller as to the frequency of maintenance performed to estimate costs / expenses related to continued maintenance.</label>
-          </div>
-
-          <div class="checkbox">
-            <label><input type="checkbox" value="The city tap should be evaluated by the local water district and repaired as needed before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The city tap should be evaluated by the local water district and repaired as needed before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
-          </div>
-
-          <div class="checkbox">
-            <label><input type="checkbox" value="The main sewer line/pipe should be cleaned of scale / hydro-jetted and re-inspected with a camera for damage and repaired or replaced as needed before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be cleaned of scale / hydro-jetted and re-inspected with a camera for damage and repaired or replaced as needed before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
-          </div>
-
-          <div class="checkbox">
-            <label><input type="checkbox" value="Proper clean-outs should be provided / added." />Proper clean-outs should be provided / added.</label>
-          </div>
-
-
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The cast iron portion of the building drain / main sewer line/pipe should be cleaned by air-jetting.">
+            The cast iron portion of the building drain / main sewer line/pipe should be cleaned by air-jetting.
+          </label>
         </div>
 
-        <div class="form-group">
-          <label for="">Upload Images:</label>
-          <input id="browse" name="files[]" type="file" onchange="previewFiles()" accept="image/*" multiple>
-          <div id="preview"></div>          
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The building drain / main sewer line/pipe should be cleaned and re-inspected with a camera.">
+            The building drain / main sewer line/pipe should be cleaned and re-inspected with a camera.
+          </label>
         </div>
 
-        <input type="submit" value="Save" class="btn btn-default" id="submit">
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The interior main sewer line / pipe clean-out fitting should be replaced.">
+            The interior main sewer line / pipe clean-out fitting should be replaced.
+          </label>
+        </div>
+
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The in-yard portion of the building sewer / lateral sewer line/pipe should be replaced, the under-road portion of the building sewer / lateral sewer line/pipe should be relined using a CIPP (cured in place pipe).">
+            The in-yard portion of the building sewer / lateral sewer line/pipe should be replaced, the under-road portion of the building sewer / lateral sewer line/pipe should be relined using a CIPP (cured in place pipe).
+          </label>
+        </div>
+
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The in-yard portion of the building sewer / lateral sewer line/pipe should be replaced using the dig and trench method, the under-road portion of the building sewer / lateral sewer line/pipe should be relined using a CIPP (cured in place pipe).">
+            The in-yard portion of the building sewer / lateral sewer line/pipe should be replaced using the dig and trench method, the under-road portion of the building sewer / lateral sewer line/pipe should be relined using a CIPP (cured in place pipe).
+          </label>
+        </div>
+
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The in-yard portion of the building sewer / lateral sewer line/pipe should be replaced using the pipe burst method, the under-road portion of the building sewer / lateral sewer line/pipe should be relined using a CIPP (cured in place pipe).">
+            The in-yard portion of the building sewer / lateral sewer line/pipe should be replaced using the pipe burst method, the under-road portion of the building sewer / lateral sewer line/pipe should be relined using a CIPP (cured in place pipe).
+          </label>
+        </div>
+
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="The transition from building drain to building sewer should be repaired.">
+            The transition from building drain to building sewer should be repaired.
+          </label>
+        </div>
+
+
+
+
+
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="The main sewer line/pipe should be cleaned for roots and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be cleaned for roots and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
+        </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="The main sewer line/pipe should be cleaned for roots annually to minimize the potential for blockage." />The main sewer line/pipe should be cleaned for roots annually to minimize the potential for blockage.</label>
+        </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="The main sewer line/pipe should be cleaned of scale / hydro-jetted and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be cleaned of scale / hydro-jetted and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
+        </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="The main sewer line/pipe should be repaired or replaced as needed and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be repaired or replaced as needed and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
+        </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="The main sewer line/pipe should be hydro-jetted and repaired as needed and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be hydro-jetted and repaired as needed and re-inspected with a camera before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
+        </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="The main sewer line/pipe appeared to be Orangeburg / Bermico (Bituminous fiber pipe); the main sewer line should be replaced before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe appeared to be Orangeburg / Bermico (Bituminous fiber pipe); the main sewer line should be replaced before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
+        </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="The exterior main sewer line/pipe showed evidence of past cleanings; consult with the Real Estate Professional / Seller as to the frequency of maintenance performed to estimate costs / expenses related to continued maintenance.">The exterior main sewer line/pipe showed evidence of past cleanings; consult with the Real Estate Professional / Seller as to the frequency of maintenance performed to estimate costs / expenses related to continued maintenance.</label>
+        </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="The city tap should be evaluated by the local water district and repaired as needed before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The city tap should be evaluated by the local water district and repaired as needed before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
+        </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="The main sewer line/pipe should be cleaned of scale / hydro-jetted and re-inspected with a camera for damage and repaired or replaced as needed before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor." />The main sewer line/pipe should be cleaned of scale / hydro-jetted and re-inspected with a camera for damage and repaired or replaced as needed before the inspection objection deadline, Real Estate contract deadline date; please consult with your Real Estate Professional / Realtor.</label>
+        </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="Proper clean-outs should be provided / added." />Proper clean-outs should be provided / added.</label>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="repairPrice">Price of Repairs:</label>
+        <select class="form-control" id="repairPrice">
+          <option selected disabled>Price</option>
+          <?php
+          for ($x = 500; $x <= 14500; $x += 500) {
+            $max = number_format($x + 500);
+            $min = number_format($x);
+
+            $value = "$$min - $$max";
+          ?>
+            <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
+          <?php } ?>
+          <option value="Over $15,000">Over $15,000</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="">Upload Images:</label>
+        <input id="browse" name="files[]" type="file" onchange="previewFiles()" accept="image/*" multiple>
+        <div id="preview"></div>
+      </div>
+
+      <input type="submit" value="Save" class="btn btn-default" id="submit">
     </form>
   </div>
 
 
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script src="js/app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
+
 </html>
