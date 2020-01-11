@@ -34,7 +34,19 @@ function previewFiles() {
 
   }
 
-  if (files) {
+  function checkFileSize(file) {
+    if (file.size / 1024 / 1024 > 1) {
+      alert('Please upload files under 1MB');
+      document.querySelector('input[type=file]').value = '';
+      files = false;
+      return false;
+    }
+  }
+
+  if (files) {  
+    [].forEach.call(files, checkFileSize);
+    
+
     [].forEach.call(files, readAndPreview);
   }
 
@@ -62,10 +74,6 @@ const callback = function(mutationsList, observer) {
             console.log('The ' + mutation.attributeName + ' attribute was modified.');
         }
     }
-
-    // observer.disconnect();
-    // addImgRemover();
-    // observer.observe(targetNode, config);
 };
 
 // Create an observer instance linked to the callback function
@@ -125,6 +133,8 @@ const conditions = [
 ];
 
 // Append conditions as options
+// TODO:
+// Adapt for recommendations as well
 function addConditions(id) {
   const defect = id.selector;
   let placeholder = "Main Line Condition ";
@@ -133,7 +143,7 @@ function addConditions(id) {
 
   placeholder += defectNum;
 
-  id.append(`<option selected="true" disabled="disabled">${placeholder}</option>`);
+  id.append(`<option selected="true" disabled>${placeholder}</option>`);
 
   // Loop through conditions
   conditions.forEach(function (condition, index) {
@@ -144,10 +154,28 @@ function addConditions(id) {
       id.append(`<option>${condition}</option>`);
     }
   });
+}
 
-  // add class 'number'
+function addRecommendation() {
+  const el = $('#recommendations');
+  let placeholder = "Inspector Recommendation";
 
-  //id.append('<option>test</option>');
+  el.append(`<option value="0" selected disabled>${placeholder}</option>`);
+
+  // Loop through recommendations
+  recommendations.forEach(function (rec, index) {
+    // if '{num}' is present
+    if (rec.indexOf('{num}') >= 0) {
+      el.append(`<option class="number">${rec}</option>`);
+    } else {
+      el.append(`<option>${rec}</option>`);
+    }
+  });
+
+}
+
+function jsUcfirst(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 $(document).ready(function() {
@@ -158,13 +186,7 @@ $(document).ready(function() {
 
   $("body").tooltip({
       selector: '[data-toggle="tooltip"]'
-  });
-
-  //console.log(conditions.length);
-
-  function jsUcfirst(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+  });  
 
   $( function() {
     $( "#datepicker" ).datepicker();
@@ -186,8 +208,9 @@ $(document).ready(function() {
   addConditions($('#lineCondition2'));
   addConditions($('#lineCondition3'));
   addConditions($('#lineCondition4'));
+  addRecommendation();
 
-  $('select').change(function() {
+  $('select:not(#recommendations)').change(function() {
     let $this = $(this);
     let $selected = $this.find(':selected');
 
@@ -219,14 +242,21 @@ $(document).ready(function() {
 
   // Click function for dynamic .remover
   $(document).on('click', '.remover', function(){
-    console.log('clicked');
     let $this = $(this);
     console.log($this);
-    $this.closest('.editing').siblings('.form-control').show();
-    $this.closest('.editing').hide();
 
-    $this.closest('.location-edit').siblings('.form-control').show();
-    $this.closest('.location-edit').remove();
+    if ($this.parents('ul').attr('id') === 'recommendationList') {
+      console.log('found it');
+
+      $this.parents('li').remove();
+    } else {
+      $this.closest('.editing').siblings('.form-control').show();
+      $this.closest('.editing').hide();
+  
+      $this.closest('.location-edit').siblings('.form-control').show();
+      $this.closest('.location-edit').remove();
+    }
+
   });
 
   // Click function for dynamic .add-range
@@ -240,6 +270,7 @@ $(document).ready(function() {
   });
 
   function generatePDF() {
+    console.log('gather PDF');
     event.preventDefault();
 
     const title = $('#companyName').val();
@@ -257,18 +288,25 @@ $(document).ready(function() {
     $('.form-group').each(function() {
       let $value;
       let $label = $(this).children('label').text();
-      if ($(this).has('.editing').length !== 0) {
+      if ($(this).has('.editing').length !== 0 && $label !== 'Inspector Recommendations:') {
         $value = $(this).children('.editing').text();
       } else if ($(this).has('.location-edit').length !== 0) {
         $value = $(this).children('.location-edit').text();
       } else if ($label === 'Inspector Recommendations:') {
+        $label = 'Inspector Recommendation:';
         $value = '<ul>';
-        $.each($('#recommendations input:checked'), function(index, value) {
-          $value += "<li>";
-          $value += $(value).val();
-          $value += "</li>";
+
+        $.each($('#recommendationList li'), function(i, val) {
+          let v = $(val).text();
+          console.log(v);
+          v = v.replace(' x', '');
+          $value += `<li>${v}</li>`;
         });
+
         $value += '</ul>';
+        if ($value === '<ul></ul>') {
+          $value = '';
+        }
       } else if ($(this).attr('id')==="video") {
         $value = 'https://' + $('#videoUrl').val();
       } else {
@@ -285,8 +323,6 @@ $(document).ready(function() {
 
       let formData = new FormData();
 
-      console.log(images);
-
       const activeImages = [];
 
       $('#preview img').each((i, e) => {
@@ -294,7 +330,6 @@ $(document).ready(function() {
       });
 
       Object.keys(images).map((x) => {
-        console.log(images[x].name);
 
         // If image has been removed
         // don't send with formdata
@@ -309,6 +344,8 @@ $(document).ready(function() {
 
       console.log(formData);
 
+      $('.loader-container').css('display', 'flex');
+
       $.ajax({
         type: 'POST',
         url: 'pdf/generate-pdf.php',
@@ -317,10 +354,12 @@ $(document).ready(function() {
         contentType: false
        }).done(function(response) {
         if (response == 'success') {
-          console.log('test')
-          // location.reload();
           window.open('pdf/report.pdf?' + (new Date()).getTime(), '_blank');
+          $('.loader-container').hide();
         }
+      }).fail((response) => {
+        alert('Upload failure. Try uploading fewer or smaller images.');
+        $('.loader-container').hide();
       });
 
     return;
@@ -370,10 +409,6 @@ $(document).ready(function() {
       res = res.replace($span, '');
       res = res.replace('+', '');
 
-
-      console.log(res);
-
-
       $(this).html(res);
     })
   }
@@ -390,6 +425,27 @@ $(document).ready(function() {
   $('.add-condition').click(function() {
     $('#condition4').show();
     $(this).hide();
+  })
+
+  $('#recommendations').change(function() {
+    const recommendation = $(this).val();//children('option:selected').attr('title');
+
+    let template = `<li>${recommendation} <span class="remover">x</span></li>`;
+    console.log(template);
+    if (template.indexOf('{num}') >= 0) {
+      const numberInput = `<input type="number" class="number-input"><a class="add-range" data-toggle="tooltip" title="Add Range"><sup>+</sup></a>`;
+
+      template = template.replace('<li>', '<li class="editing">');
+      template = template.replace(/{num}/g, numberInput);
+    }
+
+    console.log(template);
+    $(template).addClass('editing');
+
+    $('#recommendationList').append(template);
+    $(this).val('0');
+
+
   })
 
 
