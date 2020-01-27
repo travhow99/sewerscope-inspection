@@ -348,13 +348,13 @@ $(document).ready(function() {
 
       $.ajax({
         type: 'POST',
-        url: 'pdf/generate-pdf.php',
+        url: './pdf/generate-pdf.php',
         data: formData,
         processData: false,
         contentType: false
        }).done(function(response) {
         if (response == 'success') {
-          window.open('pdf/report.pdf?' + (new Date()).getTime(), '_blank');
+          window.open('./pdf/report.pdf?' + (new Date()).getTime(), '_blank');
           $('.loader-container').hide();
         }
       }).fail((response) => {

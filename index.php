@@ -1,3 +1,11 @@
+<?php
+/* if (false) { (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off") {
+  $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  header('HTTP/1.1 301 Moved Permanently');
+  header('Location: ' . $location);
+  exit;
+} */
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,16 +26,18 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
   <link rel="manifest" href="./site.webmanifest">
   <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+  <!-- <link rel="canonical" href="https://sewerscope-inspection.com/app/"> -->
+
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
   <meta name="msapplication-TileColor" content="#db000d">
   <meta name="theme-color" content="#db000d">
-  <!-- <meta http-equiv=”Refresh” content=”0;URL=https://www.yourdomainname.com”> -->
 
 </head>
 
 <body>
   <div class="container form">
+    <h1>Sewer Scope Report</h1>
     <form id="mainForm">
       <div class="input">
         <label for="companyName">Title:</label>

@@ -1,10 +1,13 @@
 <?php
-require_once 'dompdf/autoload.inc.php';
-
+// require_once 'dompdf/autoload.inc.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+die();
 use Dompdf\Dompdf;
 
 
-$dir = __DIR__."/../";
+// $dir = __DIR__."/../";
 // die();
 
 // Create file if !exists
