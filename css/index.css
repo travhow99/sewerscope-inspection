@@ -20,6 +20,10 @@ form {
   padding: 10px;
 }
 
+.text-red {
+  color: red;
+}
+
 .remover {
   color: red;
   cursor: pointer;

@@ -415,12 +415,30 @@ $(document).ready(function() {
 
 // TO-DO
   // Prevent submission if incomplete
-  $("#submit").click(function() {
+  $("#submit").click(function(e) {
+    e.preventDefault();
+    if (!verifyForm()) {
+      alert('Please fill in the required fields!');
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+      return false;
+    }
     // Call function to fix all .editing
     gatherData();
 
     generatePDF();
   });
+
+  function verifyForm() {
+    var emptyFields = $('input.required').filter(function() {
+        return $(this).val() === "";
+    }).length;
+    if (emptyFields === 0) {
+      return true;
+   } else {
+      $('#error').show();
+      return false;   
+    }
+  }
 
   $('.add-condition').click(function() {
     $('#condition4').show();

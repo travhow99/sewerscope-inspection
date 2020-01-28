@@ -40,20 +40,20 @@
     <h1>Sewer Scope Report</h1>
     <form id="mainForm">
       <div class="input">
-        <label for="companyName">Title:</label>
-        <input type="text" id="companyName" class="form-control" placeholder="Your company name" />
+        <label for="companyName">Title:</label><span class='text-red'>*</span>
+        <input required type="text" id="companyName" class="form-control required" placeholder="Your company name" />
       </div>
       <div class="input">
-        <label for="address">Property Address:</label>
-        <input type="text" name="address" class="form-control">
+        <label for="address">Property Address:</label><span class='text-red'>*</span>
+        <input required type="text" name="address" class="form-control required">
       </div>
       <div class="input">
-        <label for="date">Date of Scope:</label>
-        <input type="text" name="date" id="datepicker" class="form-control">
+        <label for="date">Date of Scope:</label><span class='text-red'>*</span>
+        <input required type="text" name="date" id="datepicker" class="form-control required">
       </div>
       <div class="input">
-        <label for="time">Time of Scope:</label>
-        <input type="text" name="time" class="timepicker form-control">
+        <label for="time">Time of Scope:</label><span class='text-red'>*</span>
+        <input required type="text" name="time" class="timepicker form-control required">
       </div>
       <hr />
 
