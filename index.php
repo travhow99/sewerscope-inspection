@@ -1,5 +1,5 @@
 <?php
-/* if (false) { (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off") {
+/* if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off") {
   $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
   header('HTTP/1.1 301 Moved Permanently');
   header('Location: ' . $location);
@@ -236,6 +236,8 @@
     </form>
   </div>
 
+  <div id="print" media="print"></div>
+
   <div class="loader-container">
     <p class="lead">Please wait while your PDF is generated!</p>
     <div class="loader"></div>
@@ -244,6 +246,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="js/html2pdf.bundle.min.js"></script>
   <script src="js/resources.js"></script>
   <script src="js/app.js"></script>
 
