@@ -1,11 +1,3 @@
-<?php
-/* if (false) { (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off") {
-  $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-  header('HTTP/1.1 301 Moved Permanently');
-  header('Location: ' . $location);
-  exit;
-} */
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -236,6 +228,8 @@
     </form>
   </div>
 
+  <div id="print" media="print"></div>
+  
   <div class="loader-container">
     <p class="lead">Please wait while your PDF is generated!</p>
     <div class="loader"></div>
@@ -246,6 +240,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="js/resources.js"></script>
   <script src="js/app.js"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./sw.js').then(function(registration) {
+        // Registration was successful
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+  </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>

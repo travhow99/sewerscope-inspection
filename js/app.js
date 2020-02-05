@@ -1,3 +1,11 @@
+const opt = {
+  // margin: 1,
+  pagebreak: { mode: 'avoid-all' },
+  filename:     'sewerscope-report.pdf',
+  // html2canvas:  { scale: 1 },
+  // jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+}
+
 function previewFiles() {
 
   var preview = document.querySelector('#preview');
@@ -35,6 +43,7 @@ function previewFiles() {
   }
 
   function checkFileSize(file) {
+    return;
     if (file.size / 1024 / 1024 > 1) {
       alert('Please upload files under 1MB');
       document.querySelector('input[type=file]').value = '';
@@ -181,6 +190,9 @@ function jsUcfirst(string) {
 $(document).ready(function() {
   $(this).scrollTop(0);
 
+  
+  
+
   // Include Bootstrap tooltip for dynamic element
   $('[data-toggle="tooltip"]').tooltip();
 
@@ -276,7 +288,9 @@ $(document).ready(function() {
     const title = $('#companyName').val();
     console.log(title);
 
-    let source = `<body><h1>${title}</h1>`;
+    let source = `<body>
+                    <h1>Sewer Scope Report</h1>
+                    <h2>${title}</h2>`;
 
     var x = $("#mainForm").serializeArray();
     console.log(x)
@@ -346,7 +360,20 @@ $(document).ready(function() {
 
       $('.loader-container').css('display', 'flex');
 
-      $.ajax({
+      $('#print').html(source);
+      // $('#print').append($('#preview').children());
+      $('#preview').children().clone().appendTo('#print');
+
+      var element = document.getElementById('print');
+      // html2pdf(element);
+      // html2pdf().set(opt).from(element).save();
+
+      window.print();  
+
+
+
+
+/*       $.ajax({
         type: 'POST',
         url: './pdf/generate-pdf.php',
         data: formData,
@@ -361,7 +388,7 @@ $(document).ready(function() {
         alert('Upload failure. Try uploading fewer or smaller images.');
         $('.loader-container').hide();
       });
-
+ */
     return;
 
   }
