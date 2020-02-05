@@ -2,7 +2,7 @@
     "name": "Sewer Scope Inspection",
     "short_name": "SS",
     "start_url": "/app/",
-    "scope": "./",
+    "scope": "/app/",
     "icons": [
         {
             "src": "./android-chrome-192x192.png",

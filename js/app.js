@@ -363,12 +363,16 @@ $(document).ready(function() {
       $('#print').html(source);
       // $('#print').append($('#preview').children());
       $('#preview').children().clone().appendTo('#print');
+      $('#print .img-remover').remove();
 
-      var element = document.getElementById('print');
+      // var element = document.getElementById('print');
       // html2pdf(element);
       // html2pdf().set(opt).from(element).save();
 
       window.print();  
+      setTimeout(() => {
+        $('.loader-container').hide();
+      }, 100);
 
 
 
