@@ -1,6 +1,6 @@
 {
     "name": "Sewer Scope Inspection",
-    "short_name": "SS",
+    "short_name": "SSIR",
     "start_url": "/app/",
     "scope": "/app/",
     "icons": [
